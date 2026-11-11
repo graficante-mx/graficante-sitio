@@ -5,7 +5,7 @@
 
   /* ---------- scroll suave (Lenis) y menú ---------- */
   let lenis = null;
-  if (!reduce && window.Lenis) { lenis = new window.Lenis({lerp: .16, wheelMultiplier: 1.1, smoothWheel: true});   // suave pero sin sensación de arrastre window.__lenis = lenis; }
+  if (!reduce && window.Lenis) { lenis = new window.Lenis({lerp: .16, wheelMultiplier: 1.1, smoothWheel: true}); /* suave pero sin sensación de arrastre */ window.__lenis = lenis; }
   const nav = $('nav');
   // al bajar se compacta; al subir (más de 8 px seguidos) vuelve el menú completo, más opaco para leerse sobre el contenido
   let lastY = 0, acc = 0;
