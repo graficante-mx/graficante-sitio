@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   const necesita = Array.isArray(body.necesita) ? body.necesita.map(v => str(v, 40)).filter(Boolean).slice(0, 8) : [];
   if (!nombre || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) return NextResponse.json({ ok: false, error: 'invalid' }, { status: 422 });
 
-  const key = process.env.RESEND_API_KEY || process.env.RESEND_APY_KEY /* nombre con errata en Vercel; quitar al renombrarla */, to = process.env.CONTACT_TO, from = process.env.CONTACT_FROM;
+  const key = process.env.RESEND_API_KEY, to = process.env.CONTACT_TO, from = process.env.CONTACT_FROM;
   if (!key || !to || !from) {
     if (process.env.NODE_ENV !== 'production') {   // en local, sin llaves, solo se muestra en la consola
       console.log('[contacto] sin Resend configurado; mensaje:', { nombre, correo, necesita, presupuesto, mensaje, idioma });
