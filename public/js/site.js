@@ -249,15 +249,15 @@ function magnetParticles(t, n){
     '.step .who span': ['People', 'AI', 'People', 'AI + people'],
     '#cases-h': ['Work you can <b>see.</b>'],
     '#casos .sec-side p': ['A few recent projects: what we were asked for, what we did and what happened next.'],
-    '.case-kind': ['Crypto trading platform · Launch', 'AI agents platform · Web, ads and social', 'Our own explainer channel · Video and social', 'Framer templates · Our own product'],
+    '.case-kind': ['Crypto trading · Launch and motion', 'AI agents · Web and social', 'Own channel · Video and social', 'Own product · Web templates'],
     '.case h3': ['A launch campaign with its own character.', 'An AI brand that looks as trustworthy as it promises.', 'A history channel that publishes four videos a day.', 'Four premium templates, published on Framer.'],
     '.case-more > p': ['We designed the teaser and waitlist phases: X headers, KOL banners, verticals and threads starring Chepe, the brand&rsquo;s astronaut. Plus motion graphics videos, UI/UX improvements to the app and animated in-app tutorials.',
                        'We redesigned Topline&rsquo;s website, its new ad campaign and its social posts, to explain AI agents with human oversight to law firms, clinics and financial firms.',
                        'We built Resumario, our own channel: scripts, illustration, voice and animation made with AI and directed by our design team. It&rsquo;s where we test first what we later do for clients.',
                        'We design and publish templates on the Framer Marketplace: NAVARA and Linnea for skincare clinics, Everly for wedding invitations and Palácio Aurora for luxury residences. Anyone can remix them for free.'],
     '.case-link': ['Watch the motion video on X<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>'],
-    '.made li span': ['Campaign', 'Motion', 'UI/UX', 'Website', 'Campaign', 'Social', 'Video', 'Social', 'Strategy', 'Website', 'Framer', 'Product'],
-    '.kpis dd': ['campaign pieces', 'launch phases', 'and motion', 'full redesign', 'new campaign', 'LinkedIn posts', 'followers', 'impressions', 'interactions', 'templates', 'leads', 'referred sales'],
+    '.made li span': ['Social', 'Motion', 'UI/UX', 'Websites', 'Social', 'UI/UX', 'Short video', 'Motion', 'Social', 'Websites', 'Framer', 'Product'],
+    '.kpis dd': ['campaign pieces', 'launch phases', 'animated tutorials', 'website redesign', 'ad campaign', 'carousel slides', 'followers', 'impressions', 'interactions', 'templates', 'leads', 'referred sales'],
     '.quote-hero .q-tr': ['', ''],
     '.quote-hero .q-role': ['CEO, Vibe Trading', 'CEO, Topline'],
     '#faq-h': ['Frequently asked <b>questions.</b>'],
@@ -716,12 +716,22 @@ function magnetParticles(t, n){
   document.querySelectorAll('.case-art').forEach(box => {
     const slides = [...box.querySelectorAll('.slide')]; if (!slides.length) return;
     const ticks = [...box.querySelectorAll('.reel-ticks button')], cap = box.querySelector('.reel-cap'), N = slides.length;
+    const chs = [];   // capítulos: cada proyecto se cuenta por partes (p. ej. Lanzamiento | Motion en la app)
+    slides.forEach((s, j) => { const c = s.dataset.chEs; if (c && !chs.some(x => x.es === c)) chs.push({es: c, en: s.dataset.chEn, first: j}); });
+    const chOf = j => Math.max(0, chs.findIndex(x => x.es === slides[Math.max(0, j)].dataset.chEs));
+    let chBtns = [];
+    if (chs.length > 1) { const w = document.createElement('div'); w.className = 'reel-chs'; w.setAttribute('role', 'group'); w.setAttribute('aria-label', 'Partes del proyecto');
+      chBtns = chs.map(c => { const b = document.createElement('button'); b.type = 'button'; b.textContent = document.documentElement.lang === 'en' ? c.en : c.es; b.addEventListener('click', e => { e.stopPropagation(); go(c.first); }); w.append(b); return b; });
+      box.append(w); ticks.forEach((t, j) => t.classList.toggle('off', chOf(j) !== 0)); }
     let k = -1, vis = false, hover = false, timer = 0, started = false, manual = false;
     box.setAttribute('tabindex', '0'); box.setAttribute('role', 'region'); box.setAttribute('aria-roledescription', 'carrusel');
     const show = n => {   // n = -1 es el logo ASCII
       k = n; box.classList.toggle('showing', k >= 0);
       slides.forEach((s, j) => s.classList.toggle('on', j === k)); ticks.forEach((t, j) => { t.classList.toggle('on', j === k); t.setAttribute('aria-current', j === k); });
       cap.textContent = k >= 0 ? slides[k].dataset[document.documentElement.lang === 'en' ? 'en' : 'es'] : '';
+      if (chs.length > 1) { const en = document.documentElement.lang === 'en', ci = chOf(k);
+        chBtns.forEach((b, i) => { b.textContent = en ? chs[i].en : chs[i].es; b.classList.toggle('on', k >= 0 && i === ci); b.setAttribute('aria-pressed', k >= 0 && i === ci); });
+        ticks.forEach((t, j) => t.classList.toggle('off', chOf(j) !== ci)); }
       slides.forEach((s, j) => { if (!s.classList.contains('lottie')) return;   // tutoriales reales de la app (Lottie): se cargan al verse y solo corren mientras están en pantalla
         if (j === k) { if (!s._anim && window.lottie) { s._anim = window.lottie.loadAnimation({container: s.querySelector('.lt'), renderer: 'svg', loop: true, autoplay: false, path: '/lottie/' + s.dataset.lottie + '.json', rendererSettings: {preserveAspectRatio: 'xMidYMid meet'}}); }
           if (s._anim) { s._anim.goToAndPlay(0, true); } }
