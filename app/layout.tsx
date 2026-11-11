@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
-const description = 'Estudio de diseño a la vanguardia: marca, contenido para redes, web y motion hechos para vender, con IA y criterio profesional en cada pieza.';
+const description = 'Estudio de diseño a la vanguardia: marca, contenido para redes, web y motion hechos para vender, con criterio profesional en cada pieza.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -229,10 +229,10 @@ function magnetParticles(t, n){
   const EN = {
     '.links a': ['Services', 'Process', 'Work', 'Plans', 'FAQ'],
     '.mnav .l': ['Services', 'Process', 'Work', 'Plans', 'FAQ'],
-    '.sub': ['We design brands, content, websites and motion on the cutting edge, with artificial intelligence and a professional eye, so your brand gets to what&rsquo;s next first.'],
+    '.sub': ['We design brands, content, websites and motion on the cutting edge, fast and with a professional eye, so your brand gets to what&rsquo;s next first.'],
     '.clients-lab': ['Brands that already trust us'],
     '#svc-h': ['Cutting-edge design, <b>made to sell.</b>'],
-    '.sec-head p': ['Social, motion, ad creatives, web and apps with one voice, always on trend. AI gives us speed; judgment decides what ships.'],
+    '.sec-head p': ['Social, motion, ad creatives, web and apps with one voice, always on trend. We move fast, and judgment decides what ships.'],
     '.svc h3': ['Content that <b>sticks.</b>', 'Brands people <b>remember.</b>', 'Sites that <b>sell.</b>'],
     '.svc .body p': ['Calendar, posts and short video for social, in a style your audience recognizes at first glance.',
                      'Logo, palette, type and pieces for your launches, with a visual system that keeps up with trends.',
@@ -249,7 +249,7 @@ function magnetParticles(t, n){
     '.step .who span': ['People', 'AI', 'People', 'AI + people'],
     '#cases-h': ['Work you can <b>see.</b>'],
     '#casos .sec-side p': ['A few recent projects: what we were asked for, what we did and what happened next.'],
-    '.case-kind': ['Crypto trading platform · Launch', 'AI agents platform · Web, ads and social', 'Our own explainer channel · AI content', 'Framer templates · Our own product'],
+    '.case-kind': ['Crypto trading platform · Launch', 'AI agents platform · Web, ads and social', 'Our own explainer channel · Video and social', 'Framer templates · Our own product'],
     '.case h3': ['A launch campaign with its own character.', 'An AI brand that looks as trustworthy as it promises.', 'A history channel that publishes four videos a day.', 'Four premium templates, published on Framer.'],
     '.case-more > p': ['We designed the teaser and waitlist phases: X headers, KOL banners, verticals and threads starring Chepe, the brand&rsquo;s astronaut. Plus motion graphics videos, UI/UX improvements to the app and animated in-app tutorials.',
                        'We redesigned Topline&rsquo;s website, its new ad campaign and its social posts, to explain AI agents with human oversight to law firms, clinics and financial firms.',
@@ -262,14 +262,15 @@ function magnetParticles(t, n){
     '.quote-hero .q-role': ['CEO, Vibe Trading', 'CEO, Topline'],
     '#faq-h': ['Frequently asked <b>questions.</b>'],
     '.faq-head p': ['What almost everyone asks us before we start. Got another one? <a href="#contacto">Write to us</a>.'],
-    '.qa .q': ['How much does it cost to work with you?', 'What does AI do and what do people do?', 'How long do you take to deliver?', 'Are the content and files mine?', 'Do I need a brand identity already?', 'Do you work with brands outside Mexico?', 'Do you shoot the photos and videos?'],
+    '.qa .q': ['How much does it cost to work with you?', 'What does AI do and what do people do?', 'Will it look like AI?', 'How long do you take to deliver?', 'Are the content and files mine?', 'Do I need a brand identity already?', 'Do you work with brands outside Mexico?', 'Do you shoot the photos and videos?'],
     '.qa .a p': ['It depends on the scope. Social content runs on monthly plans; websites and apps as fixed projects. After a short call we send you a quote in under 24 business hours.',
                  'We orchestrate the AI: we use it to explore ideas, variants and drafts fast. We&rsquo;re a team of professionals, so we decide what works, fix and finish every piece: nothing goes live without our approval.',
+                 'No. Nothing ships straight out of the AI: every piece starts from your identity (type, colour and grid) and we design it ourselves. AI saves us the heavy lifting; the team brings the style. If something looks generic, it doesn&rsquo;t ship.',
                  'A landing page ships in 3 to 5 business days once we have your materials, a social calendar starts in the first week, and a campaign&rsquo;s creatives are ready in five to ten business days.',
                  'Yes. Everything we deliver is yours: designs, copy, videos, source files and code, with no hidden licences.',
                  'No. If you don&rsquo;t have one yet, we build it with you; if you do, we respect it and take it further.',
                  'Yes. We work remotely, in Spanish and English, with brands from any country.',
-                 'We don’t do photo or video shoots. We edit the footage you share, even if it’s shot on your phone, and complement it with stock images and AI-made pieces. If you need a professional shoot, we can recommend a photographer we trust.'],
+                 'We don’t do photo or video shoots. We edit the footage you share, even if it’s shot on your phone, and complement it with stock images and custom-generated pieces. If you need a professional shoot, we can recommend a photographer we trust.'],
     '#contact-h': ['Ready to get there <b>first?</b>'],
     '.contact .lead': ['Tell us what you want to achieve. We reply in under 24 business hours with a clear proposal, no strings attached.'],
     '.direct small': ['Email', 'WhatsApp', 'Book'],
@@ -322,7 +323,7 @@ function magnetParticles(t, n){
     document.querySelectorAll('.plan-pick').forEach(b => setBtn(b, (lang === 'en' ? 'Choose ' + b.dataset.planEn : 'Elegir ' + b.dataset.plan)));
     noOrphans(); evenCards(); { const on = document.querySelector('.step.on h3'), t = document.getElementById('proc-t'); if (on && t) t.textContent = on.textContent; }
     { const PH = {es: ['Tu nombre', 'tu@marca.com', 'Tu marca, tu meta y para cuándo la necesitas'], en: ['Your name', 'you@brand.com', 'Your brand, your goal and when you need it']}[lang]; document.querySelectorAll('.form .row input, .form textarea').forEach((el, i) => { if (PH[i]) el.placeholder = PH[i]; }); }
-    document.title = META[lang].title; { const d = document.querySelector('meta[name="description"]'); if (d) d.content = lang === 'en' ? 'A cutting-edge design studio: brand, social content, web and motion made to sell, with AI and professional judgment in every piece.' : 'Estudio de diseño a la vanguardia: marca, contenido para redes, web y motion hechos para vender, con IA y criterio profesional en cada pieza.'; }
+    document.title = META[lang].title; { const d = document.querySelector('meta[name="description"]'); if (d) d.content = lang === 'en' ? 'A cutting-edge design studio: brand, social content, web and motion made to sell, with professional judgment in every piece.' : 'Estudio de diseño a la vanguardia: marca, contenido para redes, web y motion hechos para vender, con criterio profesional en cada pieza.'; }
     document.querySelectorAll('.logo').forEach(a => a.setAttribute('aria-label', META[lang].logo));
     document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
     try { localStorage.setItem('gf-lang', lang); } catch (e) {}
