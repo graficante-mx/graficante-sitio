@@ -5,7 +5,7 @@
 
   /* ---------- scroll suave (Lenis) y menú ---------- */
   let lenis = null;
-  if (!reduce && window.Lenis) { lenis = new window.Lenis({lerp: .09, smoothWheel: true}); window.__lenis = lenis; }
+  if (!reduce && window.Lenis) { lenis = new window.Lenis({lerp: .16, wheelMultiplier: 1.1, smoothWheel: true});   // suave pero sin sensación de arrastre window.__lenis = lenis; }
   const nav = $('nav');
   // al bajar se compacta; al subir (más de 8 px seguidos) vuelve el menú completo, más opaco para leerse sobre el contenido
   let lastY = 0, acc = 0;
@@ -47,7 +47,7 @@
   let W = 0, H = 0, dpr = 1;
   const mouse = {x: .5, y: .5, tx: .5, ty: .5, on: 0, ton: 0};
   function size(){
-    dpr = Math.min(2, devicePixelRatio || 1); const r = cv.getBoundingClientRect();
+    dpr = Math.min(matchMedia('(max-width:760px)').matches ? 1.25 : 1.5, devicePixelRatio || 1); const r = cv.getBoundingClientRect();
     W = cv.width = Math.round(r.width * dpr); H = cv.height = Math.round(r.height * dpr); buildAtlas(dpr);
   }
   hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mouse.tx = (e.clientX - r.left) / r.width; mouse.ty = (e.clientY - r.top) / r.height; mouse.ton = 1; });
@@ -86,7 +86,8 @@
   }
   let vis = true;
   new IntersectionObserver(es => { vis = es[0].isIntersecting; }).observe(hero);
-  function loop(t){ if (vis) draw(t); requestAnimationFrame(loop); }
+  let lastT = 0; const FRAME = matchMedia('(max-width:760px)').matches ? 1000 / 24 : 1000 / 30;   // el terreno se mueve lento: 24–30 fps se ven igual y cuestan la mitad
+  function loop(t){ if (vis && !document.hidden && t - lastT >= FRAME) { lastT = t; draw(t); } requestAnimationFrame(loop); }
   let rt = 0;
   addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); if (reduce) draw(0); }, 200); });
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { size(); if (reduce) draw(0); else requestAnimationFrame(loop); });
