@@ -609,5 +609,6 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .plan-glow{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 40%,transparent 72%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 40%,transparent 72%)}
 .plan-top{min-height:32px}   /* misma altura con o sin etiqueta: las tres tarjetas quedan alineadas */
 .plan.feat .plan-price small{color:rgba(238,220,91,.75)}
+.contact .chips label:hover input:checked+span{background:#E4E7F5;color:#2C47B8;box-shadow:inset 0 0 0 1px #FFFFFF}   /* seleccionada + cursor encima: sigue clara y legible */
 
 .form .send-err{margin:0;font-size:14px;line-height:1.5;color:#FFB8AD;text-align:center}
