@@ -237,7 +237,7 @@ function magnetParticles(t, n){
     '.svc .body p': ['Calendar, posts and short video for social, in a style your audience recognizes at first glance.',
                      'Logo, palette, type and pieces for your launches, with a visual system that keeps up with trends.',
                      'Landing pages and apps in code, designed by professionals: fast, measurable, easy to update and ready to grow with your business.'],
-    '.svc .tags li span': ['Social media', 'Short video', 'Identity', 'Motion', 'Websites', 'Apps'],
+    
     '.note i': ['01 · Sprout', '02 · Pole', '03 · Access'],
     '#proc-h': ['AI speeds things up. <b>Judgment decides.</b>'],
     '#proceso .sec-side p': ['This is how we mix new tools and craft in every project: fast where we can, careful where it matters.'],
