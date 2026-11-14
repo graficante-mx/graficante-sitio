@@ -249,17 +249,16 @@ function magnetParticles(t, n){
     '.step .who span': ['People', 'AI', 'People', 'AI + people'],
     '#cases-h': ['Work you can <b>see.</b>'],
     '#casos .sec-side p': ['A few recent projects: what we were asked for, what we did and what happened next.'],
-    '.case-kind': ['Crypto trading · Launch and motion', 'AI agents · Web and social', 'Own channel · Video and social', 'Own product · Web templates'],
-    '.case h3': ['A launch campaign with its own character.', 'An AI brand that looks as trustworthy as it promises.', 'A history channel that publishes four videos a day.', 'Four premium templates, published on Framer.'],
+    '.case-kind': ['Crypto trading · Launch and motion', 'Own channel · Video and social', 'Own product · Web templates'],
+    '.case h3': ['A launch campaign with its own character.', 'A history channel that publishes four videos a day.', 'Four premium templates, published on Framer.'],
     '.case-more > p': ['We designed the teaser and waitlist phases: X headers, KOL banners, verticals and threads starring Chepe, the brand&rsquo;s astronaut. Plus motion graphics videos, UI/UX improvements to the app and animated in-app tutorials.',
-                       'We redesigned Topline&rsquo;s website, its new ad campaign and its social posts, to explain AI agents with human oversight to law firms, clinics and financial firms.',
                        'We built Resumario, our own channel: scripts, illustration, voice and animation made with AI and directed by our design team. It&rsquo;s where we test first what we later do for clients.',
                        'We design and publish templates on the Framer Marketplace: NAVARA and Linnea for skincare clinics, Everly for wedding invitations and Palácio Aurora for luxury residences. Anyone can remix them for free.'],
     '.case-link': ['Watch the motion video on X<svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>'],
-    '.made li span': ['Social', 'Motion', 'UI/UX', 'Websites', 'Social', 'UI/UX', 'Short video', 'Motion', 'Social', 'Websites', 'Framer', 'Product'],
-    '.kpis dd': ['campaign pieces', 'launch phases', 'animated tutorials', 'website redesign', 'ad campaign', 'carousel slides', 'followers', 'impressions', 'interactions', 'templates', 'leads', 'referred sales'],
-    '.quote-hero .q-tr': ['', ''],
-    '.quote-hero .q-role': ['CEO, Vibe Trading', 'CEO, Topline'],
+    '.made li span': ['Social', 'Motion', 'UI/UX', 'Short video', 'Motion', 'Social', 'Websites', 'Framer', 'Product'],
+    '.kpis dd': ['campaign pieces', 'launch phases', 'animated tutorials', 'followers', 'impressions', 'interactions', 'templates', 'leads', 'referred sales'],
+    '.quote-hero .q-tr': [''],
+    '.quote-hero .q-role': ['CEO, Vibe Trading'],
     '#faq-h': ['Frequently asked <b>questions.</b>'],
     '.faq-head p': ['What almost everyone asks us before we start. Got another one? <a href="#contacto">Write to us</a>.'],
     '.qa .q': ['How much does it cost to work with you?', 'What does AI do and what do people do?', 'Will it look like AI?', 'How long do you take to deliver?', 'Are the content and files mine?', 'Do I need a brand identity already?', 'Do you work with brands outside Mexico?', 'Do you shoot the photos and videos?'],
@@ -436,9 +435,6 @@ function magnetParticles(t, n){
   // visuales: el símbolo de cada marca en cuadros de semitono con una luz que gira
   const FC = {
     altamar: (X, Y, t, k) => { const x = (X - .5) * k, y = Y - .5, r = Math.hypot(x, y), a = Math.atan2(y, x); if (r > .34 || r < .14) return 0; return .35 + .65 * (.5 + .5 * Math.cos(a - t * .6)); },
-    topline: (X, Y, t, k) => { const x = X, y = Y, c = .82 - .62 * Math.pow(x, 1.4) + .04 * Math.sin(x * 9), d = y - c;   // una curva de ingresos que sube, con el área debajo
-      const glow = .5 + .5 * Math.cos((x - ((t * .12) % 1.4) + .2) * 9); if (x < .1 || x > .9 || y > .86) return 0;
-      if (Math.abs(d) < .02) return .55 + .45 * glow; if (d > 0) return Math.max(0, .36 - d * .9) * (.35 + .65 * glow); return 0; },
     kora:    (X, Y, t, k) => { const x = (X - .5) * k, y = Y - .5, d = Math.abs(x) + Math.abs(y); if (d > .36) return 0; const a = Math.atan2(y, x); return .3 + .7 * (.5 + .5 * Math.cos(a + t * .5)) * (1 - d / .5); }
   };
   const arts = [...document.querySelectorAll('.case-art')].filter(el => el.querySelector('canvas') && !el.hasAttribute('data-logo')).map(el => ({el, cv: el.querySelector('canvas'), fn: FC[el.dataset.case] || FC.altamar, t: Math.random() * 5, vis: false}));
