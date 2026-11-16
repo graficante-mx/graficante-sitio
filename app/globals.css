@@ -194,7 +194,6 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .stat p{margin:0;font-size:14px;line-height:1.5;color:var(--hueso-70);text-wrap:pretty}
 @media (max-width:860px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(3){border-left:0;padding-left:0}.stat:nth-child(n+3){border-top:1px solid rgba(241,241,239,.1)}}
 .case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:64px}
-@media (min-width:861px){.case-grid>.case:last-child:nth-child(odd){grid-column:1/-1}}
 @media (max-width:860px){.case-grid{grid-template-columns:1fr}}
 .case{display:flex;flex-direction:column;border-radius:12px;background:#121212;box-shadow:inset 0 0 0 1px rgba(241,241,239,.1);overflow:hidden}
 .case-art{position:relative;aspect-ratio:16/9;max-width:100%;background:#121212;border-bottom:1px solid rgba(241,241,239,.08)}
@@ -587,10 +586,10 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 @media (max-width:560px){.quote-hero{padding-top:40px}.quote-hero .q-src{margin-left:60px}}
 .quote-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(241,241,239,.1)}
 .quote-pair .quote-hero{border-top:0;padding:48px 40px 0 0;justify-content:space-between}
-.quote-pair:has(>.quote-hero:only-child){grid-template-columns:1fr}
 .quote-pair .quote-hero+.quote-hero{border-left:1px solid rgba(241,241,239,.1);padding-left:40px;padding-right:0}
 .quote-pair .quote-hero blockquote{font-size:clamp(26px,3vw,40px);line-height:1.1;max-width:none}
 .quote-pair figcaption{margin-top:auto;padding-top:24px}
+.quote-hero .av-t{font:700 24px/1 var(--font);letter-spacing:-.04em;padding-bottom:3px}
 @media (max-width:860px){.quote-pair{grid-template-columns:1fr}.quote-pair .quote-hero{padding:40px 0 0}.quote-pair .quote-hero+.quote-hero{border-left:0;padding-left:0;margin-top:40px;border-top:1px solid rgba(241,241,239,.1)}}
 
 .form .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}   /* trampa para bots: invisible para personas */
