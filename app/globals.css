@@ -637,3 +637,23 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 }
 
 .form .send-err{margin:0;font-size:14px;line-height:1.5;color:#FFB8AD;text-align:center}
+
+/* Quién está detrás */
+.about{max-width:1120px;margin:0 auto;padding-block:40px 160px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;align-items:start}
+.about-photo{margin:0;aspect-ratio:4/5;border-radius:24px;overflow:hidden;background:rgba(241,241,239,.03);border:1px dashed rgba(241,241,239,.2);display:grid;place-items:center}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-photo:has(img){border:0}
+.about-ph{font-size:14px;line-height:1;color:#6E6E6B;letter-spacing:.02em}
+.about-body{grid-column:2 / span 2;padding-left:48px;display:flex;flex-direction:column;gap:32px}
+.about-name{margin:0;display:flex;flex-direction:column;gap:8px}
+.about-name b{font:600 clamp(24px,2.2vw,32px)/1.1 var(--font);letter-spacing:-.03em;color:var(--hueso)}
+.about-name span{font-size:16px;line-height:1.5;color:var(--hueso-70)}
+.about-bio{margin:0;max-width:56ch;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--hueso-70);text-wrap:pretty}
+.about-facts{margin:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(241,241,239,.1)}
+.about-facts>div{padding:24px 24px 24px 0;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid rgba(241,241,239,.1)}
+.about-facts>div:nth-child(even){border-left:1px solid rgba(241,241,239,.1);padding-left:24px}
+.about-facts dt{font:600 20px/1.2 var(--font);letter-spacing:-.02em;color:var(--hueso)}
+.about-facts dd{margin:0;font-size:14px;line-height:1.5;color:var(--hueso-70);text-wrap:pretty}
+@media (max-width:960px){.about-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;row-gap:32px}.about-body{grid-column:1;padding-left:0}.about-photo{max-width:320px}}
+@media (max-width:520px){.about-facts{grid-template-columns:1fr}.about-facts>div:nth-child(even){border-left:0;padding-left:0}}
