@@ -227,8 +227,8 @@ function magnetParticles(t, n){
 /* ---------- idioma: español / inglés ---------- */
 (() => {
   const EN = {
-    '.links a': ['Services', 'Process', 'Work', 'Plans', 'FAQ'],
-    '.mnav .l': ['Services', 'Process', 'Work', 'Plans', 'FAQ'],
+    '.links a': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
+    '.mnav .l': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
     '.sub': ['We design brands, content, websites and motion on the cutting edge, fast and with a professional eye, so your brand gets to what&rsquo;s next first.'],
     '.clients-lab': ['Brands that already trust us'],
     '#svc-h': ['Cutting-edge design, <b>made to sell.</b>'],
@@ -287,7 +287,7 @@ function magnetParticles(t, n){
     '.foot-top .slogan': ['Design with judgment.'],
     '.foot-top .slogan + p': ['A cutting-edge design studio, made to sell.'],
     '.foot h4': ['Site', 'Contact', 'Social'],
-    '.foot-cols > div:nth-child(1) a': ['Services', 'Process', 'Work', 'Plans', 'FAQ'],
+    '.foot-cols > div:nth-child(1) a': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
     '.foot-cols > div:nth-child(2) li:nth-child(2) a': ['Get a quote'],
     '.foot-bot span:last-child': ['<a href="/privacidad">Privacy notice</a> · <a href="/terminos">Terms</a> · Guadalajara, Mexico']
   };
