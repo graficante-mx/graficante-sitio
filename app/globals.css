@@ -669,6 +669,15 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .about .sec-side{grid-column:2 / span 2;padding-left:48px}
 .about .sec-head p{max-width:52ch}
 @media (max-width:960px){.about .sec-side{grid-column:1;padding-left:0}}
+/* el contenido va en una superficie sutil que lo separa del header; el header usa el mismo margen para no salirse de la rejilla */
+.band-hueso .about-grid{background:#E8E8E5;border-radius:40px;padding:16px}
+.about .sec-head{padding-inline:16px}
+.band-hueso .about-body{padding:32px 32px 16px 48px}
+.band-hueso .about-grid{align-items:stretch}
+.band-hueso .about-photo{box-shadow:none;aspect-ratio:auto;height:100%;min-height:360px}   /* la foto llena el alto de la superficie: sin hueco debajo */
+.band-hueso .about-facts>div:nth-last-child(-n+2){border-bottom:0}
+@media (max-width:960px){.band-hueso .about-photo{aspect-ratio:4/5;height:auto;min-height:0}.band-hueso .about-body{padding:8px 16px 0}.about .sec-head{padding-inline:0}}
+@media (max-width:520px){.band-hueso .about-facts>div:nth-last-child(2){border-bottom:1px solid rgba(14,14,14,.12)}}
 @media (max-width:960px){.band-hueso .about{padding-block:80px}}
 @media (max-width:760px){.band-hueso .about{padding:24px}.band-hueso:has(.about)+.plans{padding-top:48px}}
 @media (max-width:960px){.about-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;row-gap:32px}.about-body{grid-column:1;padding-left:0}.about-photo{max-width:320px}}
