@@ -655,5 +655,15 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .about-facts>div:nth-child(even){border-left:1px solid rgba(241,241,239,.1);padding-left:24px}
 .about-facts dt{font:600 20px/1.2 var(--font);letter-spacing:-.02em;color:var(--hueso)}
 .about-facts dd{margin:0;font-size:14px;line-height:1.5;color:var(--hueso-70);text-wrap:pretty}
+/* «Quién está detrás» en banda hueso, como Servicios: corta la racha de secciones oscuras */
+.band-hueso .about{padding-block:120px}
+.band-hueso .about-name b{color:var(--tinta)}
+.band-hueso .about-name span,.band-hueso .about-bio,.band-hueso .about-facts dd{color:#4A4A48}
+.band-hueso .about-facts dt{color:var(--tinta)}
+.band-hueso .about-facts,.band-hueso .about-facts>div,.band-hueso .about-facts>div:nth-child(even){border-color:rgba(14,14,14,.12)}
+.band-hueso .about-photo{box-shadow:0 24px 48px -24px rgba(14,14,14,.35)}
+.band-hueso:has(.about)+.plans{padding-top:160px}
+@media (max-width:960px){.band-hueso .about{padding-block:80px}}
+@media (max-width:760px){.band-hueso .about{padding:24px}.band-hueso:has(.about)+.plans{padding-top:48px}}
 @media (max-width:960px){.about-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;row-gap:32px}.about-body{grid-column:1;padding-left:0}.about-photo{max-width:320px}}
 @media (max-width:520px){.about-facts{grid-template-columns:1fr}.about-facts>div:nth-child(even){border-left:0;padding-left:0}}
