@@ -649,9 +649,9 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .about-name{margin:0;display:flex;flex-direction:column;gap:8px}
 .about-name b{font:600 clamp(24px,2.2vw,32px)/1.1 var(--font);letter-spacing:-.03em;color:var(--hueso)}
 .about-name span{font-size:16px;line-height:1.5;color:var(--hueso-70)}
-.about-bio{margin:0;max-width:56ch;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--hueso-70);text-wrap:pretty}
+.about-bio{margin:0;max-width:56ch;text-wrap:balance;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:var(--hueso-70)}
 .about-facts{margin:0;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(241,241,239,.1)}
-.about-facts>div{padding:24px 24px 24px 0;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid rgba(241,241,239,.1)}
+.about-facts>div{padding:24px 24px 24px 0;display:flex;flex-direction:column;gap:4px;border-bottom:1px solid rgba(241,241,239,.1)}
 .about-facts>div:nth-child(even){border-left:1px solid rgba(241,241,239,.1);padding-left:24px}
 .about-facts dt{font:600 20px/1.2 var(--font);letter-spacing:-.02em;color:var(--hueso)}
 .about-facts dd{margin:0;font-size:14px;line-height:1.5;color:var(--hueso-70);text-wrap:pretty}
@@ -660,6 +660,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .band-hueso .about-name b{color:var(--tinta)}
 .band-hueso .about-name span,.band-hueso .about-bio,.band-hueso .about-facts dd{color:#4A4A48}
 .band-hueso .about-facts dt{color:var(--tinta)}
+.band-hueso .about-name{padding-bottom:32px;border-bottom:1px solid rgba(14,14,14,.12)}   /* línea entre nombre y bio, igual que las de los datos */
 .band-hueso .about-facts,.band-hueso .about-facts>div,.band-hueso .about-facts>div:nth-child(even){border-color:rgba(14,14,14,.12)}
 .band-hueso .about-photo{box-shadow:0 24px 48px -24px rgba(14,14,14,.35)}
 .band-hueso:has(.about)+.plans{padding-top:160px}
