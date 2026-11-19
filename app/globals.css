@@ -20,7 +20,7 @@ a{color:inherit;text-decoration:none}
 /* ---------- navegación: cápsula flotante ---------- */
 .nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);left:0;right:0;z-index:20;display:flex;justify-content:center;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));pointer-events:none}
 /* menú: cápsula completa arriba; al bajar se compacta en un círculo con la G y el botón queda flotando a su lado */
-.navrow{pointer-events:auto;display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(26,26,26,.55);border:1px solid rgba(241,241,239,.08);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);transition:padding .6s var(--ease),background .5s var(--ease),border-color .5s var(--ease)}
+.navrow{pointer-events:auto;display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(22,22,22,.94);border:1px solid rgba(241,241,239,.08);transition:padding .6s var(--ease),background .5s var(--ease),border-color .5s var(--ease)}
 /* La transición a compacto usa una sola geometría: la caja del logo se encoge de 116 a 40 px desde la izquierda,
    la G vive siempre a 20 px de esa orilla (centro del círculo final) y nada cambia de alineación de golpe. */
 .cap{display:flex;align-items:center;gap:0;min-width:min(600px,calc(100vw - 150px));height:40px;border-radius:999px;border:1px solid transparent;transition:min-width .6s var(--ease),background .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease)}
@@ -34,10 +34,10 @@ a{color:inherit;text-decoration:none}
 .cap .links a:hover{color:var(--hueso);background:rgba(241,241,239,.06)}
 .navrow .cta{transition:background .3s var(--ease),padding .6s var(--ease),box-shadow .5s var(--ease)}
 /* estado compacto */
-.nav.up .navrow{background:rgba(18,18,18,.86);border-color:rgba(241,241,239,.12);box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.nav.up .navrow{background:rgba(18,18,18,.95);border-color:rgba(241,241,239,.12);box-shadow:0 12px 40px rgba(0,0,0,.45)}
 .navrow{transition:padding .6s var(--ease),background .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease)}
 .nav.scrolled .navrow{padding:0;background:rgba(26,26,26,0);border-color:rgba(241,241,239,0);backdrop-filter:none;-webkit-backdrop-filter:none}
-.nav.scrolled .cap{min-width:40px;background:rgba(18,18,18,.86);border-color:rgba(241,241,239,.12);box-shadow:0 12px 40px rgba(0,0,0,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav.scrolled .cap{min-width:40px;background:rgba(18,18,18,.95);border-color:rgba(241,241,239,.12);box-shadow:0 12px 40px rgba(0,0,0,.45);}
 .nav.scrolled .cap .logo{width:38px}
 .nav.scrolled .cap .logo .full{opacity:0}
 .nav.scrolled .cap .logo .mark{opacity:1;transform:translate(calc(-50% - .75px),calc(-50% - .5px)) scale(1);transition-delay:.12s}
@@ -75,8 +75,8 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .ctas{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 
 /* entrada: cada pieza sube y se enfoca, en cascada */
-.in{opacity:0;transform:translateY(18px);filter:blur(8px);animation:rise 1.1s var(--ease) forwards;animation-delay:calc(var(--d,0) * 1ms)}
-@keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+.in{opacity:0;transform:translateY(18px);animation:rise 1.1s var(--ease) forwards;animation-delay:calc(var(--d,0) * 1ms)}
+@keyframes rise{to{opacity:1;transform:none}}
 
 .next{padding:96px 16px 160px;text-align:center;color:var(--niebla);font-size:14px}
 
@@ -117,9 +117,9 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .services{max-width:1120px;margin:0 auto;padding-block:48px 160px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .sec-head{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;row-gap:32px;align-items:end;margin-bottom:64px;text-align:left}   /* misma rejilla que las tarjetas */
 @media (max-width:960px){.sec-head{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto}}
-.sec-head h2{margin:0;font:600 clamp(36px,4.6vw,56px)/1.02 var(--font);letter-spacing:-.04em;color:#B9B9B6;max-width:calc(100% - 96px);text-wrap:balance;grid-column:1 / span 2}   /* aire entre titular y descripción, sin mover la descripción de su columna */
+.sec-head h2{margin:0;font:600 clamp(36px,4.6vw,56px)/1.02 var(--font);letter-spacing:-.04em;color:#FFFFFF;max-width:calc(100% - 96px);text-wrap:balance;grid-column:1 / span 2}   /* aire entre titular y descripción, sin mover la descripción de su columna */
 @media (max-width:960px){.sec-head h2{grid-column:1;max-width:none}}
-.sec-head h2 b,.svc h3 b{font-weight:600;color:#FFFFFF}
+.sec-head h2 b,.svc h3 b{font-weight:inherit;color:inherit}
 .svc h3 b{display:block}
 #proc-h b{display:block}   /* «El criterio decide.» completo en la segunda línea */   /* la palabra resaltada siempre abre la segunda línea: los tres títulos miden dos líneas */
 .sec-side{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:6px}
@@ -143,11 +143,11 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .btn.bar{margin-top:auto;justify-content:center;border-radius:8px;padding:14px 18px;background:#FFFFFF;color:var(--tinta);font-size:14px}
 .btn.bar:hover,.btn.bar:focus-visible{background:var(--amarillo)}
 /* aparición al hacer scroll */
-.reveal{opacity:0;transform:translateY(28px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--rd,0) * 1ms)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:calc(var(--rd,0) * 1ms)}
 .reveal.on{opacity:1;transform:none;filter:none}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;filter:none;transition:none}}
 /* switch de idioma: píldora flotante aparte del menú, arriba a la derecha */
-.lang{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(20px,env(safe-area-inset-right,0px));z-index:21;display:flex;align-items:center;gap:2px;height:58px;padding:0 8px;border-radius:999px;background:rgba(26,26,26,.6);border:1px solid rgba(241,241,239,.1);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);transition:height .6s var(--ease),padding .6s var(--ease)}   /* misma altura que la cápsula del menú (8 + 40 + 8 + borde) */
+.lang{position:fixed;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(20px,env(safe-area-inset-right,0px));z-index:21;display:flex;align-items:center;gap:2px;height:58px;padding:0 8px;border-radius:999px;background:rgba(26,26,26,.6);border:1px solid rgba(241,241,239,.1);transition:height .6s var(--ease),padding .6s var(--ease)}   /* misma altura que la cápsula del menú (8 + 40 + 8 + borde) */
 .nav.scrolled ~ .lang{height:40px;padding:0 3px}
 .nav.scrolled ~ .lang button{height:32px}   /* y la misma que el menú compacto */
 .lang button{font:600 12px/1 var(--font);letter-spacing:.04em;color:#8F8F8F;background:transparent;border:0;border-radius:999px;height:40px;padding:0 12px;cursor:pointer;transition:color .3s var(--ease),background .3s var(--ease),height .6s var(--ease)}
@@ -238,8 +238,8 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .faq{background:var(--hueso);color:var(--tinta);padding-block:120px}
 .faq .in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px;align-items:start}
 .faq-head{position:sticky;top:120px;display:flex;flex-direction:column;gap:24px;padding-right:48px}
-.faq h2{margin:0;font:600 clamp(36px,4.6vw,56px)/1.02 var(--font);letter-spacing:-.04em;color:#6E6E6B;text-wrap:balance}
-.faq h2 b{font-weight:600;color:var(--tinta);display:block}
+.faq h2{margin:0;font:600 clamp(36px,4.6vw,56px)/1.02 var(--font);letter-spacing:-.04em;color:var(--tinta);text-wrap:balance}
+.faq h2 b{font-weight:inherit;color:inherit;display:block}
 .faq-head p{margin:0;font-size:16px;line-height:1.6;color:#4A4A48;text-wrap:pretty}
 .faq-head a{color:var(--tinta);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-color:rgba(14,14,14,.32);transition:text-decoration-color .3s var(--ease)}
 .faq-head a:hover{text-decoration-color:var(--tinta)}
@@ -266,8 +266,8 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .contact{position:relative;overflow:hidden;background:var(--azul);color:var(--hueso);padding-block:120px;margin-top:16px;isolation:isolate}
 .contact-ascii{position:absolute;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}   /* campo de caracteres que fluye en diagonal, hacia arriba y a la derecha */
 .contact .in{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:64px;row-gap:48px;align-items:start}
-.contact h2{margin:0 0 24px;font:600 clamp(40px,5.4vw,72px)/1 var(--font);letter-spacing:-.045em;color:rgba(241,241,239,.72);text-wrap:balance}
-.contact h2 b{font-weight:600;color:#FFFFFF;display:block}
+.contact h2{margin:0 0 24px;font:600 clamp(40px,5.4vw,72px)/1 var(--font);letter-spacing:-.045em;color:#FFFFFF;text-wrap:balance}
+.contact h2 b{font-weight:inherit;color:inherit;display:block}
 .contact .lead{margin:0 0 40px;max-width:44ch;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:rgba(241,241,239,.86);text-wrap:pretty}
 .direct{list-style:none;margin:0;padding:0;border-top:1px solid rgba(241,241,239,.24)}
 .direct li{border-bottom:1px solid rgba(241,241,239,.24)}
@@ -344,8 +344,8 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 /* servicios sobre hueso: las tarjetas siguen oscuras, como piezas sobre papel */
 .band-hueso{background:var(--hueso);margin:0 16px;border-radius:24px}
 .band-hueso .services{padding-block:120px}
-.band-hueso .sec-head h2{color:#6E6E6B}
-.band-hueso .sec-head h2 b{color:var(--tinta)}
+.band-hueso .sec-head h2{color:var(--tinta)}
+.band-hueso .sec-head h2 b{color:inherit}
 .band-hueso .sec-head p{color:#4A4A48}
 .band-hueso .sec-side .btn.y{background:var(--tinta);color:var(--hueso)}
 .band-hueso .sec-side .btn.y:hover,.band-hueso .sec-side .btn.y:focus-visible{background:var(--amarillo);color:var(--tinta)}
@@ -387,7 +387,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 /* envío: el formulario se desvanece, la tarjeta cambia de alto y la confirmación se dibuja */
 .form.anim{overflow:hidden;transition:height .6s var(--ease)}
 .form>:not(.ok){transition:opacity .35s var(--ease),transform .35s var(--ease),filter .35s var(--ease);transition-delay:calc(var(--i,0) * 35ms)}
-.form.leaving>:not(.ok){opacity:0;transform:translateY(-8px);filter:blur(4px);pointer-events:none}
+.form.leaving>:not(.ok){opacity:0;transform:translateY(-8px);pointer-events:none}
 .form.sending .btn.full{pointer-events:none;background:var(--amarillo);color:var(--tinta)}
 .form.sending .btn.full .arw svg:first-child{transform:translate(120%,-120%);opacity:0}
 .form.sending .btn.full .arw svg:last-child{transform:none;opacity:1}
@@ -399,7 +399,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .form.sent .ok p{animation:okUp .7s var(--ease) .47s both}
 @keyframes okDraw{to{stroke-dashoffset:0}}
 @keyframes okPop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
-@keyframes okUp{from{opacity:0;transform:translateY(10px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes okUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: reduce){.form.anim,.form>:not(.ok){transition:none}.form.sent .ok *{animation:none!important;stroke-dashoffset:0}}
 
 /* proceso en celular: cada paso lleva su propio visual en lugar del escenario fijo */
@@ -432,8 +432,8 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
   .nav.scrolled .cap .logo .full{transition-delay:0s}
   .menu-btn{transition:background .3s var(--ease),box-shadow .45s var(--ease)}
   .menu-btn{display:block}
-  .nav.scrolled .menu-btn{background:rgba(18,18,18,.86);box-shadow:inset 0 0 0 1px rgba(241,241,239,.12),0 12px 40px rgba(0,0,0,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-  .mnav{display:flex;flex-direction:column;gap:8px;position:absolute;top:calc(100% + 8px);left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));padding:8px 8px 8px;border-radius:24px;background:rgba(18,18,18,.92);border:1px solid rgba(241,241,239,.12);box-shadow:0 24px 64px rgba(0,0,0,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top center;transition:opacity .35s var(--ease),transform .5s var(--ease),visibility 0s linear .5s}
+  .nav.scrolled .menu-btn{background:rgba(18,18,18,.95);box-shadow:inset 0 0 0 1px rgba(241,241,239,.12),0 12px 40px rgba(0,0,0,.45);}
+  .mnav{display:flex;flex-direction:column;gap:8px;position:absolute;top:calc(100% + 8px);left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));padding:8px 8px 8px;border-radius:24px;background:rgba(18,18,18,.92);border:1px solid rgba(241,241,239,.12);box-shadow:0 24px 64px rgba(0,0,0,.55);pointer-events:none;opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top center;transition:opacity .35s var(--ease),transform .5s var(--ease),visibility 0s linear .5s}
   .nav.open .mnav{pointer-events:auto;opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .5s var(--ease),visibility 0s}
   .mnav nav{display:flex;flex-direction:column}
   .mnav nav a{display:flex;align-items:center;gap:16px;padding:16px;border-bottom:1px solid rgba(241,241,239,.08);color:var(--hueso);text-decoration:none;font:600 24px/1 var(--font);letter-spacing:-.03em}
@@ -472,7 +472,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 
 /* casos: lo que hicimos. El logo ASCII abre y luego pasan las piezas reales del proyecto */
 .case-art .reel{position:absolute;inset:0;pointer-events:none}
-.case-art .slide{position:absolute;inset:0;margin:0;opacity:0;transform:scale(1.04);filter:blur(6px);transition:opacity .7s var(--ease),transform 1.4s var(--ease),filter .7s var(--ease)}
+.case-art .slide{position:absolute;inset:0;margin:0;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease),transform 1.4s var(--ease),filter .7s var(--ease)}
 .case-art .slide.on{opacity:1;transform:none;filter:none}
 .case-art .slide img{display:block;width:100%;height:100%;object-fit:cover}
 .case-art .slide.contain{background:radial-gradient(120% 120% at 50% 0%,#1d2150,#0d0f26);padding:24px}
@@ -490,7 +490,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .reel-ticks button:hover::before{background:rgba(241,241,239,.6)}
 .reel-ticks button.on::before{width:24px;background:var(--hueso)}
 .reel-ticks button.off{display:none}
-.reel-chs{position:absolute;left:12px;top:12px;z-index:2;display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(18,18,18,.6);box-shadow:inset 0 0 0 1px rgba(241,241,239,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transform:translateY(-4px);transition:opacity .3s var(--ease),transform .4s var(--ease)}
+.reel-chs{position:absolute;left:12px;top:12px;z-index:2;display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(18,18,18,.6);box-shadow:inset 0 0 0 1px rgba(241,241,239,.12);opacity:0;transform:translateY(-4px);transition:opacity .3s var(--ease),transform .4s var(--ease)}
 .case-art.showing .reel-chs,.case-art:hover .reel-chs,.reel-chs:focus-within{opacity:1;transform:none}
 .reel-chs button{all:unset;cursor:pointer;padding:8px 12px;border-radius:999px;font:500 12px/1 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;color:rgba(241,241,239,.7);transition:background .3s var(--ease),color .3s var(--ease)}
 .reel-chs button:hover{color:var(--hueso)}
@@ -498,7 +498,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .reel-chs button:focus-visible{outline:2px solid var(--hueso);outline-offset:2px}
 @media (max-width:760px){.reel-chs{left:8px;top:8px}.reel-chs button{padding:8px}}
 .reel-ticks button:focus-visible{outline:2px solid var(--hueso);outline-offset:-2px;border-radius:4px}
-.reel-nav{all:unset;box-sizing:border-box;position:absolute;top:50%;z-index:2;width:40px;height:40px;margin-top:-20px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--hueso);background:rgba(18,18,18,.6);box-shadow:inset 0 0 0 1px rgba(241,241,239,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;transition:opacity .3s var(--ease),background .3s var(--ease),transform .4s var(--ease)}
+.reel-nav{all:unset;box-sizing:border-box;position:absolute;top:50%;z-index:2;width:40px;height:40px;margin-top:-20px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--hueso);background:rgba(18,18,18,.6);box-shadow:inset 0 0 0 1px rgba(241,241,239,.16);opacity:0;transition:opacity .3s var(--ease),background .3s var(--ease),transform .4s var(--ease)}
 .reel-nav svg{width:16px;height:16px}
 .reel-nav.prev{left:12px;transform:translateX(-4px)}.reel-nav.next{right:12px;transform:translateX(4px)}
 .case-art:hover .reel-nav,.reel-nav:focus-visible{opacity:1;transform:none}
@@ -530,7 +530,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .case-dlg{padding:0;border:0;margin:0;width:100%;height:100%;max-width:none;max-height:none;background:transparent;color:var(--hueso);overflow:hidden}
 .case-dlg::backdrop{background:rgba(0,0,0,0);transition:background .35s var(--ease)}
 .case-dlg.show::backdrop{background:rgba(0,0,0,.6)}
-.case-dlg .veil{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .35s var(--ease)}
+.case-dlg .veil{position:fixed;inset:0;background:rgba(0,0,0,.72);opacity:0;transition:opacity .35s var(--ease)}
 .case-dlg.show .veil{opacity:1}
 .case-dlg .sheet{position:fixed;left:50%;top:50%;width:min(600px,calc(100vw - 32px));max-height:min(86vh,760px);overflow:auto;overscroll-behavior:contain;padding:32px;border-radius:16px;background:#141414;box-shadow:inset 0 0 0 1px rgba(241,241,239,.1),0 32px 80px rgba(0,0,0,.6);transform:translate(-50%,-48%) scale(.97);opacity:0;transition:transform .45s var(--ease),opacity .3s var(--ease);display:flex;flex-direction:column;gap:0}
 .case-dlg.show .sheet{transform:translate(-50%,-50%);opacity:1}
@@ -566,7 +566,7 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .logo-i .lg-lukso{width:auto;height:22px}
 .logo-i .lg-indexy{width:auto;height:24px}
 /* menú móvil abierto: el fondo se desenfoca y se oscurece */
-.nav::before{content:"";position:fixed;inset:0;z-index:-1;background:rgba(10,10,10,.45);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s var(--ease),visibility 0s linear .4s}
+.nav::before{content:"";position:fixed;inset:0;z-index:-1;background:rgba(10,10,10,.78);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s var(--ease),visibility 0s linear .4s}
 .nav.open::before{opacity:1;visibility:visible;transition:opacity .4s var(--ease),visibility 0s}
 .lang{transition:opacity .3s var(--ease)}
 .nav.open ~ .lang{opacity:0;pointer-events:none}
@@ -634,7 +634,6 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 .plan.feat .plan-price small{color:rgba(238,220,91,.75)}
 .contact .chips label:hover input:checked+span{background:#E4E7F5;color:#2C47B8;box-shadow:inset 0 0 0 1px #FFFFFF}   /* seleccionada + cursor encima: sigue clara y legible */
 @media (max-width:760px){   /* en celular el vidrio esmerilado se recalcula en cada scroll: menos radio, mismo efecto */
-  .nav.scrolled .cap,.nav.up .navrow,.navrow,.lang,.nav.scrolled .menu-btn{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
   .nav:not(.scrolled):not(.up) .navrow{background:rgba(22,22,22,.82)}
 }
 
@@ -686,3 +685,9 @@ h1 .accent{color:#FFFFFF}                /* «humano» resalta por luz, no por c
 @media (max-width:760px){.band-hueso .about{padding:24px}.band-hueso:has(.about)+.plans{padding-top:48px}}
 @media (max-width:960px){.about-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto;row-gap:32px}.about-body{grid-column:1;padding-left:0}.about-photo{max-width:320px}}
 @media (max-width:520px){.about-facts{grid-template-columns:1fr}.about-facts>div:nth-child(even){border-left:0;padding-left:0}}
+
+/* sin patrones de plantilla (19 nov): las píldoras de los pasos y de los casos quedan como texto simple */
+.step .who,.made li{padding:0;background:none;box-shadow:none;border-radius:0;color:var(--niebla);font-size:13px}
+.step .who svg,.made li svg{display:none}
+.made{gap:4px 0}
+.made li+li::before{content:"·";margin:0 8px;color:var(--niebla)}
