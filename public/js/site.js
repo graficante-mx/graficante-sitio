@@ -273,17 +273,17 @@ function magnetParticles(t, n){
                  'We don’t do photo or video shoots. We edit the footage you share, even if it’s shot on your phone, and complement it with stock images and custom-generated pieces. If you need a professional shoot, we can recommend a photographer we trust.'],
     '#contact-h': ['Ready to get there <b>first?</b>'],
     '.contact .lead': ['Tell us what you want to achieve. We reply in under 24 business hours with a clear proposal, no strings attached.'],
-    '.direct small': ['Email', 'WhatsApp', 'Book'],
+    '.direct small': ['WhatsApp', 'Email', 'Book'],
     '.direct li:nth-child(3) span': ['A 20-minute call'],
-    '.form .t': ['Name', 'Email', 'Tell us a little <i>(optional)</i>'],
+    '.form .t': ['Name', 'Brand or business <i>(optional)</i>', 'Tell us a little <i>(optional)</i>'],
     '.form .fh': ['Tell us about your project'],
     '.form .fs': ['Takes 1 minute'],
-    '.form .msg': ['Enter your name', 'Check your email'],
+    '.form .msg': ['Enter your name'],
     '.form legend': ['What do you need?', 'Approximate budget'],
     '.chips span': ['Social &amp; video', 'Ad creatives', 'Website or app', 'Brand identity', 'Under MX$15k', 'MX$15k to 40k', 'Over MX$40k', 'Not sure yet'],
-    '.form .fine': ['We reply in under 24 business hours. By sending, you accept our <a href="/privacidad">Privacy notice</a>.'],
-    '.form .ok b': ['Thank you!'],
-    '.form .ok p': ['We got your message. We&rsquo;ll write back in under 24 business hours.'],
+    '.form .fine': ['WhatsApp opens with your message ready; just hit send. By sending, you accept our <a href="/privacidad">Privacy notice</a>.'],
+    '.form .ok b': ['All set!'],
+    '.form .ok p': ['Your message is in WhatsApp: just hit send. We reply in under 24 business hours.'],
     '.foot-top .slogan': ['Design with judgment.'],
     '.foot-top .slogan + p': ['A cutting-edge design studio, made to sell.'],
     '.foot h4': ['Site', 'Contact', 'Social'],
@@ -291,7 +291,7 @@ function magnetParticles(t, n){
     '.foot-cols > div:nth-child(2) li:nth-child(2) a': ['Get a quote'],
     '.foot-bot span:last-child': ['<a href="/privacidad">Privacy notice</a> · <a href="/terminos">Terms</a> · Guadalajara, Mexico']
   };
-  const BTN = {'.case-open': ['See the case', 'See the case', 'See the case', 'See the case'], '.mnav .btn': ['Get a quote'], '.form .btn': ['Send message'], '.cta': ['Get a quote'], '.ctas .btn.y': ['Get a quote'], '.ctas .btn.g': ['See how we work'], '.sec-side .btn': ['Get a quote']};
+  const BTN = {'.case-open': ['See the case', 'See the case', 'See the case', 'See the case'], '.mnav .btn': ['Get a quote'], '.form .btn': ['Send on WhatsApp'], '.cta': ['Get a quote'], '.ctas .btn.y': ['Get a quote'], '.ctas .btn.g': ['See how we work'], '.sec-side .btn': ['Get a quote']};
   const H1 = {es: ['Criterio', '*humano', 'a', 'velocidad', 'de', 'IA.'], en: ['*Human', 'judgment', 'at', 'the', 'speed', 'of', 'AI.']};
   const META = {es: {title: 'Graficante · Diseño con criterio', logo: 'Graficante, inicio'}, en: {title: 'Graficante · Design with judgment', logo: 'Graficante, home'}};
   // une las tres últimas palabras de cada párrafo con un espacio que no se parte: nunca queda una palabra sola en la última línea
@@ -322,7 +322,7 @@ function magnetParticles(t, n){
     document.querySelectorAll('[data-en]').forEach(el => { if (el.dataset.es == null) el.dataset.es = el.innerHTML; el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.es; });   // textos con su traducción en el propio elemento
     document.querySelectorAll('.plan-pick').forEach(b => setBtn(b, (lang === 'en' ? 'Choose ' + b.dataset.planEn : 'Elegir ' + b.dataset.plan)));
     noOrphans(); evenCards(); { const on = document.querySelector('.step.on h3'), t = document.getElementById('proc-t'); if (on && t) t.textContent = on.textContent; }
-    { const PH = {es: ['Tu nombre', 'tu@marca.com', 'Tu marca, tu meta y para cuándo la necesitas'], en: ['Your name', 'you@brand.com', 'Your brand, your goal and when you need it']}[lang]; document.querySelectorAll('.form .row input, .form textarea').forEach((el, i) => { if (PH[i]) el.placeholder = PH[i]; }); }
+    { const PH = {es: ['Tu nombre', 'Tu marca', 'Tu meta y para cuándo la necesitas'], en: ['Your name', 'Your brand', 'Your goal and when you need it']}[lang]; document.querySelectorAll('.form .row input, .form textarea').forEach((el, i) => { if (PH[i]) el.placeholder = PH[i]; }); }
     document.title = META[lang].title; { const d = document.querySelector('meta[name="description"]'); if (d) d.content = lang === 'en' ? 'A cutting-edge design studio: brand, social content, web and motion made to sell, with professional judgment in every piece.' : 'Estudio de diseño a la vanguardia: marca, contenido para redes, web y motion hechos para vender, con criterio profesional en cada pieza.'; }
     document.querySelectorAll('.logo').forEach(a => a.setAttribute('aria-label', META[lang].logo));
     document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
@@ -474,36 +474,37 @@ function magnetParticles(t, n){
     f._t0 = performance.now(); f.addEventListener('focusin', () => { if (!f._seen) { f._seen = true; f._t0 = performance.now(); } });
     const check = i => { const bad = !i.checkValidity() || !i.value.trim(); i.closest('.fld').classList.toggle('err', bad); return !bad; };
     f.querySelectorAll('input[required]').forEach(i => { i.addEventListener('blur', () => { if (i.value) check(i); }); i.addEventListener('input', () => { if (i.closest('.fld').classList.contains('err')) check(i); }); });
-    f.addEventListener('submit', e => {   // prototipo: no envía nada todavía
+    f.addEventListener('submit', e => {   // el formulario se envía por WhatsApp
       e.preventDefault();
       const bad = [...f.querySelectorAll('input[required]')].filter(i => !check(i));
       if (bad.length) { bad[0].focus(); return; }
       if (f.classList.contains('sending')) return;
       const bot = f.querySelector('input[name=website]').value || performance.now() - (f._t0 || 0) < 2500;   // trampa llena o envío en menos de 2.5 s: casi seguro un bot
       if (bot) { f.classList.add('sent'); return; }   // al bot se le muestra el «gracias», pero no se envía nada
+      // el mensaje se arma con lo que llenaron y se abre WhatsApp con el texto listo (la persona solo da enviar)
+      const en = document.documentElement.lang === 'en', fd = new FormData(f), L = en ? {
+        hi: 'Hi, I\u2019m', from: 'from', need: 'I need', budget: 'Budget', end: 'I found you at graficante.mx.'
+      } : {hi: 'Hola, soy', from: 'de', need: 'Necesito', budget: 'Presupuesto', end: 'Los encontré en graficante.mx.'};
+      const pick = name => [...f.querySelectorAll(`input[name=${name}]:checked`)].map(i => i.nextElementSibling.textContent.trim());
+      const nombre = fd.get('nombre').trim(), marca = (fd.get('marca') || '').trim(), necesita = pick('n'), pres = pick('p')[0], nota = (fd.get('mensaje') || '').trim();
+      const txt = [`${L.hi} ${nombre}${marca ? ` ${L.from} ${marca}` : ''}.`,
+                   necesita.length ? `${L.need}: ${necesita.join(', ').toLowerCase()}.` : '',
+                   pres ? `${L.budget}: ${pres.toLowerCase()}.` : '',
+                   nota, L.end].filter(Boolean).join('\n');
+      window.open('https://wa.me/523314385663?text=' + encodeURIComponent(txt), '_blank', 'noopener');   // se abre en el mismo clic
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, btn = f.querySelector('.btn.full'), lbl = btn && btn.querySelector('.lbl');
       if (reduce) { f.classList.add('sent'); return; }
       f.classList.add('sending');   // 1) el botón se queda amarillo y la flecha despega mientras se envía
-      const en = document.documentElement.lang === 'en', label0 = lbl ? lbl.dataset.t : '';
-      if (lbl) { lbl.style.width = ''; lbl.textContent = lbl.dataset.t = en ? 'Sending…' : 'Enviando…'; }
+      if (lbl) { lbl.style.width = ''; lbl.textContent = lbl.dataset.t = en ? 'Opening WhatsApp…' : 'Abriendo WhatsApp…'; }
       [...f.children].forEach((c, k) => c.style.setProperty('--i', k));
-      const fd = new FormData(f), data = {nombre: fd.get('nombre'), correo: fd.get('correo'), mensaje: fd.get('mensaje') || '', necesita: fd.getAll('n'), presupuesto: fd.get('p') || '', website: fd.get('website') || '', idioma: en ? 'en' : 'es'};
-      const t0 = performance.now();
-      fetch('/api/contact', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)})
-        .then(r => { if (!r.ok) throw new Error(r.status); })
-        .then(() => setTimeout(() => {   // al menos ~650 ms de «enviando» para que la transición se lea
-          const h = f.offsetHeight; f.style.height = h + 'px'; f.classList.add('anim', 'leaving');   // 2) los campos se desvanecen en cascada
-          setTimeout(() => {
-            f.classList.add('sent'); f.style.height = 'auto'; const h2 = f.offsetHeight; f.style.height = h + 'px';
-            void f.offsetHeight; f.style.height = h2 + 'px';   // 3) la tarjeta se encoge suave hasta el alto de la confirmación
-            setTimeout(() => { f.style.height = ''; f.classList.remove('anim'); }, 650);
-          }, 420);
-        }, Math.max(0, 650 - (performance.now() - t0))))
-        .catch(() => {   // si falla, el formulario vuelve a su estado y se avisa con un mensaje claro
-          f.classList.remove('sending'); if (lbl) { lbl.textContent = lbl.dataset.t = label0; }
-          let err = f.querySelector('.send-err'); if (!err) { err = document.createElement('p'); err.className = 'send-err'; err.setAttribute('role', 'alert'); f.querySelector('.fine').before(err); }
-          err.textContent = en ? 'We couldn’t send your message. Please try again or write to us on WhatsApp.' : 'No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos por WhatsApp.';
-        });
+      setTimeout(() => {   // ~650 ms de «abriendo» para que la transición se lea
+        const h = f.offsetHeight; f.style.height = h + 'px'; f.classList.add('anim', 'leaving');   // 2) los campos se desvanecen en cascada
+        setTimeout(() => {
+          f.classList.add('sent'); f.style.height = 'auto'; const h2 = f.offsetHeight; f.style.height = h + 'px';
+          void f.offsetHeight; f.style.height = h2 + 'px';   // 3) la tarjeta se encoge suave hasta el alto de la confirmación
+          setTimeout(() => { f.style.height = ''; f.classList.remove('anim'); }, 650);
+        }, 420);
+      }, 650);
     });
   }
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
