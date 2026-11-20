@@ -227,8 +227,8 @@ function magnetParticles(t, n){
 /* ---------- idioma: español / inglés ---------- */
 (() => {
   const EN = {
-    '.links a': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
-    '.mnav .l': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
+    '.links a': ['Services', 'Process', 'Work', 'About', 'FAQ'],
+    '.mnav .l': ['Services', 'Process', 'Work', 'About', 'FAQ'],
     '.sub': ['We design brands, content, websites and motion on the cutting edge, fast and with a professional eye, so your brand gets to what&rsquo;s next first.'],
     '.clients-lab': ['Brands that already trust us'],
     '#svc-h': ['Cutting-edge design, <b>made to sell.</b>'],
@@ -278,15 +278,15 @@ function magnetParticles(t, n){
     '.form .fh': ['Tell us about your project'],
     '.form .fs': ['Takes 1 minute'],
     '.form .msg': ['Enter your name'],
-    '.form legend': ['What do you need?', 'Approximate budget'],
-    '.chips span': ['Social &amp; video', 'Ad creatives', 'Website or app', 'Brand identity', 'Under MX$15k', 'MX$15k to 40k', 'Over MX$40k', 'Not sure yet'],
+    '.form legend': ['What do you need?'],
+    '.chips span': ['Social &amp; video', 'Ad creatives', 'Website or app', 'Brand identity'],
     '.form .fine': ['WhatsApp opens with your message ready; just hit send. By sending, you accept our <a href="/privacidad">Privacy notice</a>.'],
     '.form .ok b': ['All set!'],
     '.form .ok p': ['Your message is in WhatsApp: just hit send. We reply in under 24 business hours.'],
     '.foot-top .slogan': ['Design with judgment.'],
     '.foot-top .slogan + p': ['A cutting-edge design studio, made to sell.'],
     '.foot h4': ['Site', 'Contact', 'Social'],
-    '.foot-cols > div:nth-child(1) a': ['Services', 'Process', 'Work', 'About', 'Plans', 'FAQ'],
+    '.foot-cols > div:nth-child(1) a': ['Services', 'Process', 'Work', 'About', 'FAQ'],
     '.foot-cols > div:nth-child(2) li:nth-child(2) a': ['Get a quote'],
     '.foot-bot span:last-child': ['<a href="/privacidad">Privacy notice</a> · <a href="/terminos">Terms</a> · Guadalajara, Mexico']
   };
@@ -482,13 +482,12 @@ function magnetParticles(t, n){
       if (bot) { f.classList.add('sent'); return; }   // al bot se le muestra el «gracias», pero no se envía nada
       // el mensaje se arma con lo que llenaron y se abre WhatsApp con el texto listo (la persona solo da enviar)
       const en = document.documentElement.lang === 'en', fd = new FormData(f), L = en ? {
-        hi: 'Hi, I\u2019m', from: 'from', need: 'I need', budget: 'Budget', end: 'I found you at graficante.mx.'
-      } : {hi: 'Hola, soy', from: 'de', need: 'Necesito', budget: 'Presupuesto', end: 'Los encontré en graficante.mx.'};
+        hi: 'Hi, I\u2019m', from: 'from', need: 'I need', end: 'I found you at graficante.mx.'
+      } : {hi: 'Hola, soy', from: 'de', need: 'Necesito', end: 'Los encontré en graficante.mx.'};
       const pick = name => [...f.querySelectorAll(`input[name=${name}]:checked`)].map(i => i.nextElementSibling.textContent.trim());
-      const nombre = fd.get('nombre').trim(), marca = (fd.get('marca') || '').trim(), necesita = pick('n'), pres = pick('p')[0], nota = (fd.get('mensaje') || '').trim();
+      const nombre = fd.get('nombre').trim(), marca = (fd.get('marca') || '').trim(), necesita = pick('n'), nota = (fd.get('mensaje') || '').trim();
       const txt = [`${L.hi} ${nombre}${marca ? ` ${L.from} ${marca}` : ''}.`,
                    necesita.length ? `${L.need}: ${necesita.join(', ').toLowerCase()}.` : '',
-                   pres ? `${L.budget}: ${pres.toLowerCase()}.` : '',
                    nota, L.end].filter(Boolean).join('\n');
       window.open('https://wa.me/523314385663?text=' + encodeURIComponent(txt), '_blank', 'noopener');   // se abre en el mismo clic
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, btn = f.querySelector('.btn.full'), lbl = btn && btn.querySelector('.lbl');
